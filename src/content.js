@@ -2,19 +2,19 @@ const intervalRateMs = 1000;
 const maxCountdownStartTimeMs = 35 * 1000;
 const minCountdownStartTimeMs = 5 * 1000;
 
-const cssClassName_Wrapper = `meetings-page-auto-closer-for-zoom-wrapper`;
-const cssClassName_MainPopOver = `meetings-page-auto-closer-for-zoom-main-pop-over`;
-const cssClassName_CountdownText = `meetings-page-auto-closer-for-zoom-countdown-text`;
-const cssClassName_CloseNowBtn = `meetings-page-auto-closer-for-zoom-close-now-btn`;
-const cssClassName_StopLink = `meetings-page-auto-closer-for-zoom-stop-link`;
+const cssClassName_Wrapper = `page-auto-closer-for-chrome-wrapper`;
+const cssClassName_MainPopOver = `page-auto-closer-for-chrome-main-pop-over`;
+const cssClassName_CountdownText = `page-auto-closer-for-chrome-countdown-text`;
+const cssClassName_CloseNowBtn = `page-auto-closer-for-chrome-close-now-btn`;
+const cssClassName_StopLink = `page-auto-closer-for-chrome-stop-link`;
 
-const cssClassName_SettingsMenu = `meetings-page-auto-closer-for-zoom-settings-menu`;
-const cssClassName_SettingsOption = `meetings-page-auto-closer-for-zoom-settings-option`;
+const cssClassName_SettingsMenu = `page-auto-closer-for-chrome-settings-menu`;
+const cssClassName_SettingsOption = `page-auto-closer-for-chrome-settings-option`;
 
-const localStorageKey_CountdownStartTimeMs = `b9d55053-5a15-4b65-98ce-73711e1d83f9`;
+const localStorageKey_CountdownStartTimeMs = `a65d38be-3ae4-47e5-8bfd-482ab89dd120`;
 
 function log(text) {
-  console.log(`MPACFZ: ${text}`);
+  console.log(`PACFC: ${text}`);
 }
 
 log('loaded...');
