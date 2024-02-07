@@ -16,6 +16,7 @@ const localStorageKey_CountdownStartTimeMs = `a65d38be-3ae4-47e5-8bfd-482ab89dd1
 const autoClosePageTextIncludes = [
   // AWS VPN Client
   'you may close this window at any time.',
+  'you have been logged out due to inactivity. refresh or return to the sign in screen.',
   // Zoom
   'click open zoom.',
   'click launch meeting below',
