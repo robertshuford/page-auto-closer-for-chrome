@@ -1,0 +1,53 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger on version tags
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: prod
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for release notes
+      # Disable AppArmor https://github.com/puppeteer/puppeteer/pull/13196
+      - name: Disable AppArmor
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+      
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+      
+      - name: Create ZIP file
+        env:
+          tag: ${{ github.ref_name }}
+        run: |
+          zip -r "page-auto-closer-for-chrome-${tag}.zip" . -x "*.git*" ".github/*"
+      
+      - name: Create CRX file
+        env:
+          tag: ${{ github.ref_name }}
+        run: |
+          # Unzip the extension to the temp directory
+          unzip "page-auto-closer-for-chrome-${tag}.zip" -d page-auto-closer-for-chrome-${tag}
+          # Save the private key from secret
+          echo "${{ secrets.PAGE_AUTO_CLOSER_FOR_CHROME_KEY }}" > extension.pem
+          # Pack the extension using Chrome
+          chrome --pack-extension="$(pwd)/page-auto-closer-for-chrome-${tag}" --pack-extension-key="$(pwd)/extension.pem"
+          # Cleanup
+          rm -rf page-auto-closer-for-chrome-${tag} extension.pem
+      
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+            --title "Release $tag" \
+            --generate-notes \
+            "page-auto-closer-for-chrome-${tag}.zip" \
+            "page-auto-closer-for-chrome-${tag}.crx" 
