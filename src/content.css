@@ -1,4 +1,4 @@
-.meetings-page-auto-closer-for-zoom-wrapper {
+.page-auto-closer-for-chrome-wrapper {
   position: absolute;
   margin: auto;
   left: 0;
@@ -11,7 +11,7 @@
   width: fit-content;
 }
 
-.meetings-page-auto-closer-for-zoom-wrapper .meetings-page-auto-closer-for-zoom-main-pop-over {
+.page-auto-closer-for-chrome-wrapper .page-auto-closer-for-chrome-main-pop-over {
   padding: 6px;
   padding-left: 10px;
   padding-right: 10px;
@@ -25,17 +25,17 @@
   border-radius: 4px;
 }
 
-.meetings-page-auto-closer-for-zoom-wrapper .meetings-page-auto-closer-for-zoom-main-pop-over .meetings-page-auto-closer-for-zoom-countdown-text {
+.page-auto-closer-for-chrome-wrapper .page-auto-closer-for-chrome-main-pop-over .page-auto-closer-for-chrome-countdown-text {
   margin-bottom: 6px;
 }
 
-.meetings-page-auto-closer-for-zoom-wrapper .meetings-page-auto-closer-for-zoom-main-pop-over .meetings-page-auto-closer-for-zoom-stop-link {
+.page-auto-closer-for-chrome-wrapper .page-auto-closer-for-chrome-main-pop-over .page-auto-closer-for-chrome-stop-link {
   cursor: pointer;
   font-size: 16px;
   padding: 4px;
 }
 
-.meetings-page-auto-closer-for-zoom-wrapper .meetings-page-auto-closer-for-zoom-main-pop-over .meetings-page-auto-closer-for-zoom-close-now-btn {
+.page-auto-closer-for-chrome-wrapper .page-auto-closer-for-chrome-main-pop-over .page-auto-closer-for-chrome-close-now-btn {
   cursor: pointer;
   font-weight: bold;
   padding: 4px;
@@ -43,7 +43,7 @@
   margin-left: 36px;
 }
 
-.meetings-page-auto-closer-for-zoom-wrapper .meetings-page-auto-closer-for-zoom-settings-menu {
+.page-auto-closer-for-chrome-wrapper .page-auto-closer-for-chrome-settings-menu {
   margin-top: 6px;
   padding: 6px;
   padding-left: 10px;
@@ -57,7 +57,7 @@
   border-radius: 2px;
 }
 
-.meetings-page-auto-closer-for-zoom-wrapper .meetings-page-auto-closer-for-zoom-settings-menu .meetings-page-auto-closer-for-zoom-settings-option {
+.page-auto-closer-for-chrome-wrapper .page-auto-closer-for-chrome-settings-menu .page-auto-closer-for-chrome-settings-option {
   cursor: pointer;
   font-size: 12px;
   padding: 1px;
