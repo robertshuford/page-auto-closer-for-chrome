@@ -1,6 +1,6 @@
 const intervalRateMs = 1000;
-const maxCountdownStartTimeMs = 35 * 1000;
-const minCountdownStartTimeMs = 5 * 1000;
+const maxCountdownStartTimeMs = 36 * 1000;
+const minCountdownStartTimeMs = 3 * 1000;
 
 const cssClassName_Wrapper = `page-auto-closer-for-chrome-wrapper`;
 const cssClassName_MainPopOver = `page-auto-closer-for-chrome-main-pop-over`;
@@ -105,7 +105,7 @@ function countdownWithText(countdownTimeMs) {
 }
 
 function injectAndUpdateSettingsMenu() {
-  const incrementalSec = 5.0;
+  const incrementalSec = 3.0;
   const trueCountdownStartTimeSec = Math.round(getCountdownStartTimeMs() / incrementalSec / 1000.0) * incrementalSec;
 
   const optionsList = [];
