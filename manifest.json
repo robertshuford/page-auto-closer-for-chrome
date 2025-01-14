@@ -17,6 +17,7 @@
     {
       "run_at": "document_start",
       "matches": [
+        "http://127.0.0.1:35001/",
         "*://*.zoom.us/a/*",
         "*://*.zoom.us/b/*",
         "*://*.zoom.us/c/*",

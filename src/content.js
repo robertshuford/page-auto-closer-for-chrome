@@ -13,6 +13,28 @@ const cssClassName_SettingsOption = `page-auto-closer-for-chrome-settings-option
 
 const localStorageKey_CountdownStartTimeMs = `a65d38be-3ae4-47e5-8bfd-482ab89dd120`;
 
+const autoClosePageTextIncludes = [
+  // AWS VPN Client with Okta auth
+  'you may close this window at any time.',
+  'you have been logged out due to inactivity. refresh or return to the sign in screen.',
+  // Zoom
+  'click open zoom.',
+  'click launch meeting below',
+  'having issues with zoom',
+  'meeting has been launched',
+];
+
+const autoCloseUrlIncludes = [
+  // Zoom
+  'success',
+];
+
+const autoCloseUrlStartsWith = [
+  // Zoom
+  '/wc/leave',
+  '/postattendee',
+];
+
 function log(text) {
   console.log(`PACFC: ${text}`);
 }
@@ -134,58 +156,31 @@ function getUrl() {
   return new URL(window.location.href);
 }
 
-function isWebClientLeave() {
+function isAutoCloseUrl() {
   const url = getUrl();
-  if (url.pathname && url.pathname.startsWith('/wc/leave')) {
+  const pathname = url.pathname.toLowerCase();
+  if (!url || !url.pathname) { return false; }
+  if (autoCloseUrlIncludes.some((autoCloseUrl) => pathname.includes(autoCloseUrl))) {
     return true;
-  } else {
-    return false;
   }
-}
-
-function isPostAttendee() {
-  const url = getUrl();
-  if (url.pathname && url.pathname.startsWith('/postattendee')) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function isMeetingStatusSuccess() {
-  if (window.location.href.toLowerCase().includes('success')) {
+  if (autoCloseUrlStartsWith.some((autoCloseUrl) => pathname.startsWith(autoCloseUrl))) {
     return true;
   }
 
   return false;
 }
 
-function isPageTextLikeMeetingLaunch() {
+function isAutoClosePageText() {
   const pageText = document?.body?.innerText?.toLowerCase() || '';
-  if (pageText.includes('click open zoom.')) {
-    return true;
-  }
-  if (pageText.includes('click launch meeting below')) {
-    return true;
-  }
-  if (pageText.includes('having issues with zoom')) {
-    return true;
-  }
-  if (pageText.includes('meeting has been launched')) {
-    return true;
-  }
-  if (pageText.includes('having issues with zoom')) {
-    return true;
-  }
-  return false;
+  return autoClosePageTextIncludes.some((autoClosePageText) => pageText.includes(autoClosePageText))
 }
 
 function countDownToClose() {
   timeTillCloseMs -= intervalRateMs;
-  log(`TimeMs left: ${timeTillCloseMs} isPageText=${isPageTextLikeMeetingLaunch()} isSuccess=${isMeetingStatusSuccess()} isPostAttendee=${isPostAttendee()} isWebClientLeave=${isWebClientLeave()}`);
+  log(`TimeMs left: ${timeTillCloseMs}`);
 
-  if (isPageTextLikeMeetingLaunch() || isMeetingStatusSuccess() || isPostAttendee() || isWebClientLeave()) {
-    log(`All checks good to auto close`);
+  if (isAutoClosePageText() || isAutoCloseUrl()) {
+    log(`Auto close condition detected isAutoClosePageText=${isAutoClosePageText()} isAutoCloseUrl=${isAutoCloseUrl()}`);
   } else {
     timeTillCloseMs += intervalRateMs; // Put back the time
     return;
