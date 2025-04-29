@@ -17,6 +17,8 @@ const autoClosePageTextIncludes = [
   // AWS VPN Client with Okta auth
   'you may close this window at any time.',
   'you have been logged out due to inactivity. refresh or return to the sign in screen.',
+  // HashiCorp Vault with Okta auth
+  'you can now close this window and start using vault.',
   // Zoom
   'click open zoom.',
   'click launch meeting below',
