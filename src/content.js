@@ -14,6 +14,8 @@ const cssClassName_SettingsOption = `page-auto-closer-for-chrome-settings-option
 const localStorageKey_CountdownStartTimeMs = `a65d38be-3ae4-47e5-8bfd-482ab89dd120`;
 
 const autoClosePageTextIncludes = [
+  // Zscaler
+  'click open zscaler on the dialog shown by your browser',
   // AWS VPN Client with Okta auth
   'you may close this window at any time.',
   'you have been logged out due to inactivity. refresh or return to the sign in screen.',
