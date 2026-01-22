@@ -1,7 +1,7 @@
 {
   "name": "Page Auto Closer for Chrome",
   "description": "Automatically closes pages used to launch external apps and restores focus to the tab you were on before opened.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 3,
   "homepage_url": "https://github.com/robertshuford/page-auto-closer-for-chrome",
   "icons": {
@@ -19,6 +19,7 @@
       "matches": [
         "http://127.0.0.1:35001/",
         "http://localhost:8250/oidc/callback*",
+        "https://samlsp.zpatwo.net/auth/appredir.html*",
         "*://*.zoom.us/a/*",
         "*://*.zoom.us/b/*",
         "*://*.zoom.us/c/*",
